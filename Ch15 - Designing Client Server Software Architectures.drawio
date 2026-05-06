@@ -1,0 +1,97 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.5.1 Chrome/142.0.7444.265 Electron/39.6.1 Safari/537.36" version="29.5.1">
+  <diagram name="Page-1" id="7t8joogHRhc3-r-z5jlP">
+    <mxGraphModel dx="868" dy="562" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;ALL-IN-ONE DIAGRAM: LIBRARY MANAGEMENT SYSTEM (SWD392)&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="600" x="250" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="clientWeb" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="&lt;b&gt;Máy tính cá nhân&lt;/b&gt;&lt;br&gt;(Sinh viên/Giảng viên)" vertex="1">
+          <mxGeometry height="60" width="160" x="300" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="clientMob" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="&lt;b&gt;Điện thoại&lt;/b&gt;&lt;br&gt;(Sinh viên/Giảng viên)" vertex="1">
+          <mxGeometry height="60" width="160" x="650" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gateway" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;API Gateway&lt;/b&gt;&lt;br&gt;(Routing / Load Balancing)" vertex="1">
+          <mxGeometry height="50" width="200" x="450" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="userService" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;UserService&lt;/b&gt;&lt;br&gt;Quản lý &amp; Xác thực" vertex="1">
+          <mxGeometry height="60" width="150" x="100" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="bookService" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;BookService&lt;/b&gt;&lt;br&gt;Quản lý Sách" vertex="1">
+          <mxGeometry height="60" width="150" x="315" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="loanService" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;LoanService&lt;/b&gt;&lt;br&gt;Mượn / Trả" vertex="1">
+          <mxGeometry height="60" width="150" x="570" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="notiService" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;b&gt;NotificationService&lt;/b&gt;&lt;br&gt;Gửi cảnh báo" vertex="1">
+          <mxGeometry height="60" width="150" x="830" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeClient1" edge="1" parent="1" source="clientWeb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="gateway">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeClient2" edge="1" parent="1" source="clientMob" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="gateway">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeS1" edge="1" parent="1" source="gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontColor=#0000FF;" target="bookService" value="&lt;b&gt;[Sync]&lt;/b&gt;&lt;br&gt;Tìm kiếm sách">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeS2" edge="1" parent="1" source="gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontColor=#0000FF;" target="loanService" value="&lt;b&gt;[Sync]&lt;/b&gt;&lt;br&gt;Duyệt mượn">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeS3" edge="1" parent="1" source="gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="userService">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeA1" edge="1" parent="1" source="notiService" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;fontColor=#FF0000;" target="loanService" value="&lt;b&gt;[Async]&lt;/b&gt;&lt;br&gt;Gửi Email">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wrapperClass" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacingLeft=10;" value="&lt;b&gt;BookWrapper (DAO)&lt;/b&gt;&lt;hr&gt;+ findByTitle(title): List&amp;lt;Book&amp;gt;&lt;br&gt;&lt;i&gt;SELECT * FROM Book &lt;br&gt;WHERE title LIKE &#39;%{title}%&#39;;&lt;/i&gt;" vertex="1">
+          <mxGeometry height="80" width="180" x="210" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeWrap" edge="1" parent="1" source="bookService" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="wrapperClass">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dbArea" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#B3B3B3;dashed=1;verticalAlign=top;spacingTop=10;" value="&lt;b&gt;Relational Database Schema&lt;/b&gt;" vertex="1">
+          <mxGeometry height="230" width="1000" x="50" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="tblMember" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;" value="&lt;b&gt;Member&lt;/b&gt;&lt;hr&gt;&lt;u&gt;memberId&lt;/u&gt;: String&lt;br&gt;name: String&lt;br&gt;email: String&lt;br&gt;type: String" vertex="1">
+          <mxGeometry height="110" width="160" x="80" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="tblLoan" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;" value="&lt;b&gt;LoanRecord&lt;/b&gt;&lt;hr&gt;&lt;u&gt;loanId&lt;/u&gt;: String&lt;br&gt;loanDate: Date&lt;br&gt;dueDate: Date&lt;br&gt;returnDate: Date&lt;br&gt;status: String&lt;br&gt;&lt;i&gt;memberId&lt;/i&gt;: String (FK)" vertex="1">
+          <mxGeometry height="140" width="180" x="320" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="tblDetail" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;" value="&lt;b&gt;LoanDetail&lt;/b&gt; &lt;i&gt;(Bảng trung gian)&lt;/i&gt;&lt;hr&gt;&lt;u&gt;&lt;i&gt;loanId&lt;/i&gt;&lt;/u&gt;: String (PK, FK)&lt;br&gt;&lt;u&gt;&lt;i&gt;isbn&lt;/i&gt;&lt;/u&gt;: String (PK, FK)" vertex="1">
+          <mxGeometry height="90" width="200" x="580" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="tblBook" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;" value="&lt;b&gt;Book&lt;/b&gt;&lt;hr&gt;&lt;u&gt;isbn&lt;/u&gt;: String&lt;br&gt;title: String&lt;br&gt;author: String&lt;br&gt;totalCopies: int&lt;br&gt;availableCopies: int" vertex="1">
+          <mxGeometry height="120" width="160" x="860" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="dbLink1" edge="1" parent="1" source="userService" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.5;entryY=0;dashed=1;" target="tblMember">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dbLink2" edge="1" parent="1" source="loanService" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.5;entryY=0;dashed=1;" target="tblLoan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dbLink3" edge="1" parent="1" source="wrapperClass" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.5;entryY=0;dashed=1;" target="tblBook">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel1" edge="1" parent="1" source="tblMember" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;endFill=1;startArrow=none;" target="tblLoan" value="1..*">
+          <mxGeometry relative="1" x="-0.5" y="15" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel2" edge="1" parent="1" source="tblLoan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;endFill=1;startArrow=none;" target="tblDetail" value="1..*">
+          <mxGeometry relative="1" x="-0.5" y="15" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel3" edge="1" parent="1" source="tblBook" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;endFill=1;startArrow=none;exitX=0;exitY=0.5;" target="tblDetail" value="1..*">
+          <mxGeometry relative="1" x="0.5" y="-15" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
